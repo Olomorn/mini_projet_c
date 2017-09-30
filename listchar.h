@@ -1,18 +1,19 @@
 /*ROUSSEAU ET GOUGEON*/
 
-#ifndef listchar
-#define listchar
+#ifndef listcharh
+#define listcharh
 
 #include <stdbool.h>
 
 /*Implementation des structures*/
-typedef struct Cell {
+
+typedef struct {
   char c;
-  Cell *suiv;
-  Cell *prec;
+  struct Cell *suiv;
+  struct Cell *prec;
 } Cell;
 
-typedef struct Cell *listchar;
+typedef Cell *listchar;
 
 /*Prototypes des fonctions*/
 
@@ -30,16 +31,16 @@ void gotoLast(listchar curs);
 /*Ajoute une valeur à la liste en insertion.
 Déplace le pointeur sur la valeur ajoutée.
 Si la liste est vide, créé la première cell.*/
-void addCharNext(listchar curs, int val);
+void addCharNext(listchar curs, char c);
 
-void addCharPrev(listchar curs, int val);
+void addCharPrev(listchar curs, char c);
 
-void delCurrent(listchar curs);
+//void delCurrent(listchar curs);
 
-void erase(listchar curs);
+//void erase(listchar curs);
 
 bool isEmpty(listchar curs);
 
 void printList(listchar curs);
 
-#endif /*listchar*/
+#endif /*listcharh*/

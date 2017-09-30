@@ -1,5 +1,7 @@
 /*ROUSSEAU ET GOUGEON*/
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "listchar.h"
 
 listchar newListe() {
@@ -7,27 +9,29 @@ listchar newListe() {
   return tmp;
 }
 
-void initCell(listchar curs, char c) {
-  Cell *tmp = (Cell)malloc(sizeof(Cell));
-  tmp->c = c;
+void initCell(listchar curs, char val) {
+  Cell* tmp = malloc(sizeof(Cell));
+  tmp->c = val;
   tmp->suiv = NULL;
   tmp->prec = NULL;
+  printf("là\n");
   curs = tmp;
+  printf("là\n");
 }
 
-void addCharNext (listchar curs, char c) {
+void addCharNext (listchar curs, char val) {
   if (isEmpty(curs)) {
-    initCell(curs, c);
+    initCell(curs, val);
   } else {
-  Cell tmp = (Cell)malloc(sizeof(Cell));
-  tmp->c = c;
-  tmp->suiv = curs->suiv;
-  tmp->prec = curs;
-  if (curs->suiv != NULL) {
-    curs->suiv->prec = tmp;
-  }
-  curs->suiv = tmp;
-  curs = tmp;
+    Cell *tmp = malloc(sizeof(Cell));
+    tmp->c = val;
+    tmp->suiv = curs->suiv;
+    tmp->prec = curs;
+    if (curs->suiv != NULL) {
+      //curs->suiv->prec = tmp;
+    }
+    curs->suiv = tmp;
+    curs = tmp;
   }
 }
 
@@ -35,12 +39,12 @@ void addCharPrev (listchar curs, char c) {
   if (isEmpty(curs)) {
     initCell(curs, c);
   } else {
-    Cell tmp = (Cell)malloc(sizeof(Cell));
+    Cell *tmp = malloc(sizeof(Cell));
     tmp->c = c;
     tmp->suiv = curs;
     tmp->prec = curs->prec;
     if (curs->prec != NULL) {
-      curs->prec->suiv = tmp;
+      //curs->prec->suiv = tmp;
     }
     curs->prec = tmp;
     curs = tmp;
@@ -60,5 +64,34 @@ void mvPrev(listchar curs) {
 }
 
 bool isEmpty (listchar curs) {
-  
+  if (curs == NULL) {
+    return true;
+  }
+  return false;
+}
+
+void printList (listchar curs) {
+  listchar tmp = curs;
+  gotoFirst(tmp);
+  while (tmp != NULL) {
+    printf("%c", tmp->c);
+    tmp = tmp->suiv;
+  }
+  printf("\n");
+}
+
+void gotoFirst(listchar curs) {
+  if (!(isEmpty(curs))) {
+    while (curs->prec != NULL) {
+      curs = curs->prec;
+    }
+  }
+}
+
+void gotoLast(listchar curs) {
+  if (!(isEmpty(curs))) {
+    while (curs->suiv != NULL) {
+      curs = curs->suiv;
+    }
+  }
 }
