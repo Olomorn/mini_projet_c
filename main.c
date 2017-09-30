@@ -13,14 +13,14 @@ int main(/*int argc, char const *argv[]*/) {
     printf("Liste non vide\n");
   }
 
-  addCharNext(listeTest, 'c');
-  addCharNext(listeTest, ' ');
-  addCharNext(listeTest, '1');
-  addCharNext(listeTest, ' ');
-  addCharNext(listeTest, 't');
-  addCharNext(listeTest, 'e');
-  addCharNext(listeTest, 's');
-  addCharNext(listeTest, 't');
+  addCharNext(&listeTest, 'c');
+  addCharNext(&listeTest, ' ');
+  addCharNext(&listeTest, '1');
+  addCharNext(&listeTest, ' ');
+  addCharNext(&listeTest, 't');
+  addCharNext(&listeTest, 'e');
+  addCharNext(&listeTest, 's');
+  addCharNext(&listeTest, 't');
 
   printList(listeTest);
 
@@ -30,14 +30,15 @@ int main(/*int argc, char const *argv[]*/) {
     printf("Liste non vide\n");
   }
 
-  gotoFirst(listeTest);
+  gotoFirst(&listeTest);
 
-  mvNext(listeTest);
-  addCharPrev(listeTest, 'e');
-  addCharPrev(listeTest, 's');
-  addCharPrev(listeTest, 't');
+  mvNext(&listeTest);
+  addCharPrev(&listeTest, 't');
+  addCharPrev(&listeTest, 's');
+  addCharPrev(&listeTest, 'e');
+  addCharPrev(&listeTest, '\'');
 
-  gotoFirst(listeTest);
+  printList(listeTest);
 
   return 0;
 }
