@@ -40,5 +40,35 @@ int main(/*int argc, char const *argv[]*/) {
 
   printList(listeTest);
 
+  mvNext(&listeTest);
+  mvNext(&listeTest);
+  mvNext(&listeTest);
+
+  delCurrent(&listeTest);
+  delCurrent(&listeTest);
+  delCurrent(&listeTest);
+  delCurrent(&listeTest);
+
+  printList(listeTest);
+
+  gotoFirst(&listeTest);
+  delCurrent(&listeTest);
+  delCurrent(&listeTest);
+  gotoLast(&listeTest);
+
+  if (isEmpty(listeTest)) {
+    printf("Liste est vide\n");
+  } else {
+    printList(listeTest);
+  }
+
+  erase(&listeTest);
+
+  if (isEmpty(listeTest)) {
+    printf("Liste est vide\n");
+  } else {
+    printList(listeTest);
+  }
+
   return 0;
 }

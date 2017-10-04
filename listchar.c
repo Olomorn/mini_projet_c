@@ -61,6 +61,51 @@ void mvPrev(listchar *curs) {
   }
 }
 
+void gotoFirst(listchar *curs) {
+  if (!(isEmpty(*curs))) {
+    while ((*curs)->prec != NULL) {
+      (*curs) = (*curs)->prec;
+    }
+  }
+}
+
+void gotoLast(listchar *curs) {
+  if (!(isEmpty(*curs))) {
+    while ((*curs)->suiv != NULL) {
+      (*curs) = (*curs)->suiv;
+    }
+  }
+}
+
+void delCurrent(listchar *curs) {
+  listchar tmp = *curs;
+  if(tmp != NULL) {
+    if (tmp->suiv == NULL && tmp->prec == NULL) {
+      (*curs) = NULL;
+    } else if (tmp->suiv != NULL && tmp->prec == NULL) {
+      tmp->suiv->prec = NULL;
+      (*curs) = (*curs)->suiv;
+    } else if (tmp->suiv == NULL && tmp->prec != NULL) {
+      tmp->prec->suiv = NULL;
+      (*curs) = (*curs)->prec;
+    } else {
+      tmp->prec->suiv = tmp->suiv;
+      tmp->suiv->prec = tmp->prec;
+      (*curs) = (*curs)->prec;
+    }
+    free(tmp);
+  }
+}
+
+void erase(listchar *curs) {
+  if((*curs) != NULL) {
+    gotoFirst(curs);
+    while ((*curs) != NULL) {
+      delCurrent(curs);
+    }
+  }
+}
+
 bool isEmpty (listchar curs) {
   if (curs == NULL) {
     return true;
@@ -76,20 +121,4 @@ void printList (listchar curs) {
     tmp = tmp->suiv;
   }
   printf("\n");
-}
-
-void gotoFirst(listchar *curs) {
-  if (!(isEmpty(*curs))) {
-    while ((*curs)->prec != NULL) {
-      (*curs) = (*curs)->prec;
-    }
-  }
-}
-
-void gotoLast(listchar *curs) {
-  if (!(isEmpty(*curs))) {
-    while ((*curs)->suiv != NULL) {
-      (*curs) = (*curs)->suiv;
-    }
-  }
 }
