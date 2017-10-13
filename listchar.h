@@ -27,9 +27,9 @@ void addCharNext(listchar *curs, char val);
 
 void addCharPrev(listchar *curs, char val);
 
-void mvNext(listchar *curs);
+bool mvNext(listchar *curs);
 
-void mvPrev(listchar *curs);
+bool mvPrev(listchar *curs);
 
 void gotoFirst(listchar *curs);
 
@@ -42,5 +42,11 @@ void erase(listchar *curs);
 bool isEmpty(listchar curs);
 
 void printList(listchar curs);
+
+int lineLength(listchar curs);
+
+int cursPos(listchar curs);
+
+char currentChar (listchar curs);
 
 #endif /*listcharh*/
