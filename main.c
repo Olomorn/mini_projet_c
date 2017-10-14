@@ -22,7 +22,7 @@ int main(/*int argc, char const *argv[]*/) {
   addCharNext(&listeTest, 's');
   addCharNext(&listeTest, 't');
 
-  printList(listeTest);
+  printList(listeTest); printf("\n");
 
   if (isEmpty(listeTest)) {
     printf("Liste est vide\n");
@@ -38,7 +38,7 @@ int main(/*int argc, char const *argv[]*/) {
   addCharPrev(&listeTest, 'e');
   addCharPrev(&listeTest, '\'');
 
-  printList(listeTest);
+  printList(listeTest); printf("\n");
 
   mvNext(&listeTest);
   mvNext(&listeTest);
@@ -49,7 +49,7 @@ int main(/*int argc, char const *argv[]*/) {
   delCurrent(&listeTest);
   delCurrent(&listeTest);
 
-  printList(listeTest);
+  printList(listeTest); printf("\n");
 
   gotoFirst(&listeTest);
   delCurrent(&listeTest);
@@ -59,7 +59,7 @@ int main(/*int argc, char const *argv[]*/) {
   if (isEmpty(listeTest)) {
     printf("Liste est vide\n");
   } else {
-    printList(listeTest);
+    printList(listeTest); printf("\n");
   }
 
   erase(&listeTest);
@@ -67,7 +67,7 @@ int main(/*int argc, char const *argv[]*/) {
   if (isEmpty(listeTest)) {
     printf("Liste est vide\n");
   } else {
-    printList(listeTest);
+    printList(listeTest); printf("\n");
   }
 
   return 0;

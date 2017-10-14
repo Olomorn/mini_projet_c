@@ -8,7 +8,7 @@
 
 #define clear() printf("\033[2J")
 
-/*============================================================================*/
+/*=fonction de raffraichissement d'ecran et de recuperation de l'entree=======*/
 int getch(void) {
     struct termios oldt, newt;
     int ch;
@@ -83,6 +83,12 @@ int main(/*int argc, char const *argv[]*/) {
           }
           mvPrev(&texte);
         }
+        break;
+      case 70 : //touche fin > deplace le cruseur a la fin du fichier
+        gotoLast(&texte);
+        break;
+      case 72 :
+        gotoFirst(&texte); //touche debut > deplace le curseur au ebut du fichier
         break;
       case 91 : // capture les caractere speciaux
         break;

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "listchar.h"
 
-/*=cre une liste==============================================================*/
+/*=cree une liste==============================================================*/
 listchar newListe() {
   listchar tmp = NULL;
   return tmp;
@@ -21,7 +21,7 @@ void initCell(listchar *curs, char val) {
 
 /*=ajoute un caractere apres le caractere courrant============================*/
 //deplace le curseur sur le caractere cree
-//si la liste est vide, cre la premiere cellule
+//si la liste est vide, cree la premiere cellule
 void addCharNext (listchar *curs, char val) {
   if (isEmpty(*curs)) {
     initCell(curs, val);
@@ -40,7 +40,7 @@ void addCharNext (listchar *curs, char val) {
 
 /*=ajoute un caractere avant le caractere courrant============================*/
 //deplace le curseur sur le caractere cree
-//si la liste est vide, cre la premiere cellule
+//si la liste est vide, cree la premiere cellule
 void addCharPrev (listchar *curs, char c) {
   if (isEmpty(*curs)) {
     initCell(curs, c);
@@ -143,7 +143,7 @@ void printList (listchar curs) {
   //printf("\n");
 }
 
-/*=donne la position entre 2 '\n' (sur une ligne) où se trouve le curseur=====*/
+/*=donne la position entre 2 '\n' (sur une ligne) ou se trouve le curseur=====*/
 int lineLength(listchar curs) {
   int i = 0;
   listchar tmpCurs = curs;
@@ -152,7 +152,7 @@ int lineLength(listchar curs) {
       mvPrev(&tmpCurs);
     }
     while (tmpCurs->c != '\n' && mvNext(&tmpCurs)) {
-      if (tmpCurs->c != -61) { //si c'est un caractere special il est compose de deux caracteres, donc il ne faut en compter qu'un seul.
+      if (tmpCurs->c != -61) { //si c'est un caractere, accentue il est compose de deux caracteres, donc il ne faut en compter qu'un seul.
         i++;
       }
     }
@@ -165,7 +165,7 @@ int cursPos(listchar curs) {
   int i = 0;
   if (!isEmpty(curs)) {
     while (curs->c != '\n' && mvPrev(&curs)) {
-      if (curs->c != -61) { //si c'est un caractere special il est compose de deux caracteres, donc il ne faut en compter qu'un seul.
+      if (curs->c != -61) { //si c'est un caractere accentue, il est compose de deux caracteres, donc il ne faut en compter qu'un seul.
         i++;
       }
     }
